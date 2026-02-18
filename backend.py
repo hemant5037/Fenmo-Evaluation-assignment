@@ -112,6 +112,9 @@ def _get_idempotency_key():
 
 @app.route('/expenses', methods=['POST'])
 def create_expense():
+    # When deployed (e.g. via gunicorn), __main__ doesn't run.
+    # Ensure tables exist before handling requests.
+    init_db()
     data = request.get_json(force=True, silent=True)
     if not data:
         return jsonify({'error': 'Invalid JSON'}), 400
@@ -174,6 +177,7 @@ def create_expense():
 
 @app.route('/expenses', methods=['GET'])
 def get_expenses():
+    init_db()
     category = request.args.get('category', '').strip()
     sort = request.args.get('sort', '').strip()
 
