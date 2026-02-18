@@ -1,2 +1,1 @@
-main page
-hlo ji
+Expense Tracker is a small, production‑ready personal finance tool that lets you quickly record, filter, and review your daily spending. It combines a reliable Flask + SQLite API (with idempotent writes and safe money handling) and a clean React UI that supports category filters, date sorting, and a running total of visible expenses—so you always know exactly where your money is going.
